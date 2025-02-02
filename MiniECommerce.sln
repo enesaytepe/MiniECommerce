@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "src\Infrastructure\Persistence\Persistence.csproj", "{254C9C01-98C0-4C62-A4A0-6F85A9DBC98C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCuttingConcerns", "CrossCuttingConcerns", "{83584FF5-0F62-4658-814E-2EE17B8F37CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCuttingConcerns", "src\CrossCuttingConcerns\CrossCuttingConcerns\CrossCuttingConcerns.csproj", "{029E1B40-CD71-45BB-B8F3-D587F124A3AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{254C9C01-98C0-4C62-A4A0-6F85A9DBC98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{254C9C01-98C0-4C62-A4A0-6F85A9DBC98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{254C9C01-98C0-4C62-A4A0-6F85A9DBC98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{029E1B40-CD71-45BB-B8F3-D587F124A3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{029E1B40-CD71-45BB-B8F3-D587F124A3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{029E1B40-CD71-45BB-B8F3-D587F124A3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{029E1B40-CD71-45BB-B8F3-D587F124A3AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,8 @@ Global
 		{E04A76FE-3107-4FCC-A7F6-04D4A7924D20} = {F7BC1434-34A8-4405-886F-45A82E78436D}
 		{019427DB-A7E7-4B96-8327-CCC47118B6A3} = {E04A76FE-3107-4FCC-A7F6-04D4A7924D20}
 		{254C9C01-98C0-4C62-A4A0-6F85A9DBC98C} = {E04A76FE-3107-4FCC-A7F6-04D4A7924D20}
+		{83584FF5-0F62-4658-814E-2EE17B8F37CC} = {F7BC1434-34A8-4405-886F-45A82E78436D}
+		{029E1B40-CD71-45BB-B8F3-D587F124A3AC} = {83584FF5-0F62-4658-814E-2EE17B8F37CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0315C621-3F6C-475F-86C1-B9BA5C898B90}
