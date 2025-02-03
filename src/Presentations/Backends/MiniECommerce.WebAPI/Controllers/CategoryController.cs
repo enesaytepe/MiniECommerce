@@ -1,6 +1,7 @@
 ﻿using Application.Features.Category.Commands.Create;
 using Application.Features.Category.Commands.Delete;
 using Application.Features.Category.Commands.Update;
+using Application.Features.Category.Queries.GetAllList;
 using Application.Features.Category.Queries.GetList;
 using Application.Requests;
 using Application.Responses;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MiniECommerce.WebAPI.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class CategoryController : BaseController
 {
@@ -18,7 +19,7 @@ public class CategoryController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
-        GetAllListCategoryQuery getListCategoryQuery = new() { PageRequest = pageRequest };
+        GetListCategoryQuery getListCategoryQuery = new() { PageRequest = pageRequest };
         GetListResponse<GetAllListCategoryItemDto> result = await Mediator.Send(getListCategoryQuery);
         return Ok(result);
     }
@@ -30,7 +31,7 @@ public class CategoryController : BaseController
     public async Task<IActionResult> GetAllList()
     {
         GetAllListCategoryQuery getListCategoryQuery = new();
-        GetListResponse<GetAllListCategoryItemDto> result = await Mediator.Send(getListCategoryQuery);
+        List<GetAllListCategoryItemDto> result = await Mediator.Send(getListCategoryQuery);
         return Ok(result);
     }
 

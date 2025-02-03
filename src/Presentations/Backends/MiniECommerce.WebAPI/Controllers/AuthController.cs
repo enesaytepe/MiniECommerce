@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MiniECommerce.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthController : BaseController
     {
@@ -20,7 +20,7 @@ namespace MiniECommerce.WebAPI.Controllers
             _configuration = configuration.GetSection("WebAPIConfiguration").Get<WebAPIConfiguration>();
         }
 
-        [HttpGet("LogTest")]
+        [HttpGet()]
         public async Task<IActionResult> LogTest()
         {
             var testRequest = new TestLogRequest { Message = "Log test mesajı" };
@@ -28,7 +28,7 @@ namespace MiniECommerce.WebAPI.Controllers
             return Ok(response);
         }
 
-        [HttpPost("Login")]
+        [HttpPost()]
         [ProducesResponseType(typeof(LoggedResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -43,7 +43,7 @@ namespace MiniECommerce.WebAPI.Controllers
             return Ok(result.ToHttpResponse());
         }
 
-        [HttpPost("Register")]
+        [HttpPost()]
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
             RegisterCommand registerCommand = new() { UserForRegisterDto = userForRegisterDto, IPAddress = GetIpAddress() };
@@ -52,7 +52,7 @@ namespace MiniECommerce.WebAPI.Controllers
             return Created(uri: "", result.AccessToken);
         }
 
-        [HttpGet("RefreshToken")]
+        [HttpGet()]
         [ProducesResponseType(typeof(RefreshedTokensResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RefreshToken()
@@ -63,7 +63,7 @@ namespace MiniECommerce.WebAPI.Controllers
             return Created(uri: "", result.AccessToken);
         }
 
-        [HttpPut("RevokeToken")]
+        [HttpPut()]
         [ProducesResponseType(typeof(RevokedTokenResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RevokeToken([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)] string? refreshToken)

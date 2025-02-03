@@ -2,7 +2,6 @@ using Application.Features.Category.Constants;
 using Application.Features.Category.Rules;
 using Application.Pipelines.Authorization;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Repositories;
 using MediatR;
 using static Application.Features.Category.Constants.CategoryOperationClaims;
@@ -39,7 +38,7 @@ public class DeleteCategoryCommand : IRequest<DeletedCategoryResponse>, ISecured
             await _categoryBusinessRules.CategoryIdShouldExistWhenSelected(request.Id);
             await _categoryBusinessRules.CategoryMustNotHaveSubCategories(request.Id);
 
-            List<Product>? products = await _productRepository.GetAllListAsync(predicate: p => p.CategoryId == request.Id);
+            List<Domain.Entities.Product>? products = await _productRepository.GetAllListAsync(predicate: p => p.CategoryId == request.Id);
 
             if (products?.Any() == true)
                 await _productRepository.DeleteRangeAsync(products);
