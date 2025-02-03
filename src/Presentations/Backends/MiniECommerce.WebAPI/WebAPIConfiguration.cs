@@ -1,4 +1,4 @@
-﻿namespace WebAPI
+﻿namespace MiniECommerce.WebAPI
 {
     public class WebAPIConfiguration
     {

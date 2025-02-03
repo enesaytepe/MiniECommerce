@@ -1,8 +1,8 @@
 ﻿using Application.Dtos;
 using Application.Features.Auth.Rules;
-using Application.Hashing;
 using Application.JWT;
 using Application.Services.AuthService;
+using CrossCuttingConcerns.Hashing;
 using Domain.Entities;
 using Domain.Repositories;
 using MediatR;

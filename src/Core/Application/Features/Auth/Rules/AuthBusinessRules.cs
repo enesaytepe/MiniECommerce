@@ -1,7 +1,7 @@
 using Application.Features.Auth.Constants;
-using Application.Hashing;
 using Application.Rules;
 using CrossCuttingConcerns.Exceptions.Types;
+using CrossCuttingConcerns.Hashing;
 using Domain.Entities;
 using Domain.Repositories;
 

@@ -6,9 +6,8 @@ using Application.Features.Auth.Commands.Register;
 using Application.Features.Auth.Commands.RevokeToken;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MiniECommerce.WebAPI.Controllers;
 
-namespace WebAPI.Controllers
+namespace MiniECommerce.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
