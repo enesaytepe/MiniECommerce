@@ -29,7 +29,7 @@ public class CategoryController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetAllList()
     {
-        GetAllListCategoryQuery getListCategoryQuery = new() { PageRequest = pageRequest };
+        GetAllListCategoryQuery getListCategoryQuery = new();
         GetListResponse<GetAllListCategoryItemDto> result = await Mediator.Send(getListCategoryQuery);
         return Ok(result);
     }
