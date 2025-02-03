@@ -1,4 +1,8 @@
 ﻿using Application.JWT;
+using Application.Pipelines.Authorization;
+using Application.Pipelines.Caching;
+using Application.Pipelines.Logging;
+using Application.Pipelines.Validation;
 using Application.Rules;
 using Application.Services.AuthService;
 using Application.Services.UserService;
@@ -17,7 +21,12 @@ namespace Application
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                configuration.AddOpenBehavior(typeof(ExceptionLoggingBehavior<,>));
+                configuration.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
+                configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
+                configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
                 configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+                configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
             });
 
             services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));

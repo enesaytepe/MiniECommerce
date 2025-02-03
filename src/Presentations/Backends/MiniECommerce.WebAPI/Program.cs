@@ -38,6 +38,8 @@ builder.Services
         };
     });
 
+builder.Services.AddDistributedMemoryCache(); // InMemory
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(
     opt =>
