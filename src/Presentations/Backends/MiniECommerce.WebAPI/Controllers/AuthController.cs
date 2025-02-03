@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Features.Auth.Commands.Login;
+using Application.Features.Auth.Commands.LogTest;
 using Application.Features.Auth.Commands.RefreshTokenCommands;
 using Application.Features.Auth.Commands.Register;
 using Application.Features.Auth.Commands.RevokeToken;
@@ -18,6 +19,14 @@ namespace WebAPI.Controllers
         public AuthController(IConfiguration configuration)
         {
             _configuration = configuration.GetSection("WebAPIConfiguration").Get<WebAPIConfiguration>();
+        }
+
+        [HttpGet("LogTest")]
+        public async Task<IActionResult> LogTest()
+        {
+            var testRequest = new TestLogRequest { Message = "Log test mesajı" };
+            var response = await Mediator.Send(testRequest);
+            return Ok(response);
         }
 
         [HttpPost("Login")]

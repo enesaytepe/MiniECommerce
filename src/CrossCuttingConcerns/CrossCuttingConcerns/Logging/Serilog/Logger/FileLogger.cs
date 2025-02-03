@@ -13,11 +13,11 @@ public class FileLogger : LoggerServiceBase
     {
         _configuration = configuration;
 
-        // appsettings.json dosyasından FileLogConfiguration ayarlarını al
-        var logConfig = configuration.GetSection("SeriLogConfigurations:FileLogConfiguration").Get<FileLogConfiguration>()
-                        ?? throw new Exception(SerilogMessages.NullOptionsMessage);
+        FileLogConfiguration logConfig =
+           configuration.GetSection("SeriLogConfigurations:FileLogConfiguration").Get<FileLogConfiguration>()
+           ?? throw new Exception(SerilogMessages.NullOptionsMessage);
 
-        string logFilePath = Path.Combine(Directory.GetCurrentDirectory(), logConfig.FolderPath) + ".txt";
+        string logFilePath = string.Format(format: "{0}{1}", arg0: Directory.GetCurrentDirectory() + logConfig.FolderPath, arg1: ".txt");
 
         Logger = new LoggerConfiguration().WriteTo
             .File(

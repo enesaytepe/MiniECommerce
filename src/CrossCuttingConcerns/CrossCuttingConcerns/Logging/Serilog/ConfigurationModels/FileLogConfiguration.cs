@@ -3,4 +3,5 @@
 public class FileLogConfiguration
 {
     public string FolderPath { get; set; }
+    public bool LogBusinessAndValidationExceptions { get; set; }
 }
