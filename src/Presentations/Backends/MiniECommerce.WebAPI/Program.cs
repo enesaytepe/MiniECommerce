@@ -1,3 +1,4 @@
+using Application;
 using Application.Encryption;
 using Application.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,6 +15,7 @@ Console.WriteLine("Content Root Path" + builder.Environment.ContentRootPath);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration.GetConnectionString("MiniECommerceConnectionString"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -80,6 +82,8 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 var app = builder.Build();
+
+DatabaseSeeder.EnsureSeed(app);
 
 if (app.Environment.IsDevelopment())
 {
