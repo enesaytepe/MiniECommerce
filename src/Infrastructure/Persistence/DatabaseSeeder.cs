@@ -1,4 +1,4 @@
-﻿using Application.Hashing;
+﻿using CrossCuttingConcerns.Hashing;
 using Domain.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

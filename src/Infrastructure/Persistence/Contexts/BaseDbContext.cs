@@ -13,6 +13,8 @@ public class BaseDbContext(DbContextOptions dbContextOptions, IConfiguration con
     public DbSet<User> Users { get; set; }
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
