@@ -16,19 +16,22 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder.HasMany(p => p.Products);
         builder.HasOne(p => p.ParentCategory);
 
+        builder.Property(o => o.Name).IsRequired().HasMaxLength(100);
+
         builder.Property(o => o.CreatedDateTime).HasDefaultValueSql(SqlConstants.CurrentUTCTimeStamp);
 
         var categories = new List<Category>
         {
-            new Category { Id = 1, Name = "Category 1", ParentCategoryId = null, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 2, Name = "Category 1-1", ParentCategoryId = 1, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 3, Name = "Category 1-1-1", ParentCategoryId = 2, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 4, Name = "Category 1-1-2", ParentCategoryId = 2, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 5, Name = "Category 1-2", ParentCategoryId = 1, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 6, Name = "Category 2", ParentCategoryId = null, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 7, Name = "Category 3", ParentCategoryId = null, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 8, Name = "Category 3-1", ParentCategoryId = 7, CreatedDateTime = DateTime.UtcNow },
-            new Category { Id = 9, Name = "Category 3-1-1", ParentCategoryId = 8, CreatedDateTime = DateTime.UtcNow }
+            new Category { Id = 1, Name = "Elektronik", ParentCategoryId = null, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 2, Name = "Bilgisayar", ParentCategoryId = 1, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 3, Name = "Telefon", ParentCategoryId = 1, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 4, Name = "Dizüstü Bilgisayar", ParentCategoryId = 2, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 5, Name = "Masaüstü Bilgisayar", ParentCategoryId = 2, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 6, Name = "Android Telefon", ParentCategoryId = 3, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 7, Name = "iOS Telefon", ParentCategoryId = 3, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 8, Name = "Ev Elektroniği", ParentCategoryId = null, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 9, Name = "Televizyon", ParentCategoryId = 8, CreatedDateTime = DateTime.UtcNow },
+            new Category { Id = 10, Name = "Beyaz Eşya", ParentCategoryId = 8, CreatedDateTime = DateTime.UtcNow }
         };
 
         builder.HasData(categories);
