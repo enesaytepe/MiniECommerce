@@ -18,6 +18,8 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
 
         return services;
     }

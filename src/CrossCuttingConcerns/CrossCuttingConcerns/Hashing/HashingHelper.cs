@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Application.Hashing;
+namespace CrossCuttingConcerns.Hashing;
 
 public static class HashingHelper
 {
